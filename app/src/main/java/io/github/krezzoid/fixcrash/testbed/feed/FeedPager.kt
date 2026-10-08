@@ -11,6 +11,6 @@ class FeedPager(
 
     fun page(index: Int): List<FeedItem> {
         val from = index * pageSize
-        return items.subList(from, from + pageSize)
+        return items.subList(from, minOf(from + pageSize, items.size))
     }
 }

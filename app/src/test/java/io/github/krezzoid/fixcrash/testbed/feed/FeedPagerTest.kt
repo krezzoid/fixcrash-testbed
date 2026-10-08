@@ -18,4 +18,11 @@ class FeedPagerTest {
 
         assertEquals((11..20).toList(), page.map { it.id })
     }
+
+    @Test
+    fun returnsPartialLastPage() {
+        val page = FeedPager(items(23), pageSize = 10).page(2)
+
+        assertEquals((21..23).toList(), page.map { it.id })
+    }
 }
