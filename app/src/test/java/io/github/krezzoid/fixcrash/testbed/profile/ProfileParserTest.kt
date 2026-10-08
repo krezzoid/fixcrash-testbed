@@ -19,4 +19,13 @@ class ProfileParserTest {
 
         assertEquals(Profile("user-0002", "Another User", "https://example.com/a.png"), profile)
     }
+
+    @Test
+    fun parsesProfileWithoutAvatar() {
+        val json = """{"id":"user-0042","displayName":"Synthetic User"}"""
+
+        val profile = ProfileParser().parse(json)
+
+        assertEquals("user-0042", profile.id)
+    }
 }
