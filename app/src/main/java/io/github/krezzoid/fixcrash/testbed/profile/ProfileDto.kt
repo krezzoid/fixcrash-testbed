@@ -3,7 +3,7 @@ package io.github.krezzoid.fixcrash.testbed.profile
 data class ProfileDto(
     val id: String,
     val displayName: String,
-    val avatar: AvatarDto,
+    val avatar: AvatarDto? = null,
 )
 
 data class AvatarDto(

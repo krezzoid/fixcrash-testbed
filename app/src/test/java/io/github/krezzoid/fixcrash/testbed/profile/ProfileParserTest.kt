@@ -19,4 +19,20 @@ class ProfileParserTest {
 
         assertEquals(Profile("user-0002", "Another User", "https://example.com/a.png"), profile)
     }
+
+    @Test
+    fun parsesProfileWithoutAvatar() {
+        // The backend omits the "avatar" member entirely. Gson bypasses the Kotlin
+        // constructor null check, so ProfileDto.avatar is null despite its non-null type.
+        val json = """
+            {
+              "id": "synthetic-id",
+              "displayName": "Synthetic Name"
+            }
+        """.trimIndent()
+
+        val profile = ProfileParser().parse(json)
+
+        assertEquals("synthetic-id", profile.id)
+    }
 }

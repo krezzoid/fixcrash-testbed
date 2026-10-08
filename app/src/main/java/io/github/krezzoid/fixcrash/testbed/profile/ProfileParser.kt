@@ -9,7 +9,7 @@ class ProfileParser(private val gson: Gson = Gson()) {
         return Profile(
             id = dto.id,
             displayName = dto.displayName,
-            avatarUrl = dto.avatar.url,
+            avatarUrl = dto.avatar?.url.orEmpty(),
         )
     }
 }
