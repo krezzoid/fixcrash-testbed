@@ -19,4 +19,16 @@ class ProfileParserTest {
 
         assertEquals(Profile("user-0002", "Another User", "https://example.com/a.png"), profile)
     }
+
+    @Test
+    fun parsesProfileWithoutAvatar() {
+        val json = """
+            {
+              "id": "user-0003",
+              "displayName": "Test User"
+            }
+        """.trimIndent()
+
+        ProfileParser().parse(json)
+    }
 }
